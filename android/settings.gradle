@@ -1,0 +1,3 @@
+rootProject.name = 'Order8'
+
+include ':app'
