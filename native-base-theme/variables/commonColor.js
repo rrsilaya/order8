@@ -1,17 +1,13 @@
 import color from "color";
-
 import { Platform, Dimensions, PixelRatio } from "react-native";
+
+import { colors } from '../../app/config/theme';
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 const platform = Platform.OS;
 const platformStyle = undefined;
 const isIphoneX = platform === "ios" && deviceHeight === 812 && deviceWidth === 375;
-
-const colors = {
-  white: '#fff',
-  base: '#011627'
-};
 
 export default {
   platformStyle,
@@ -127,7 +123,7 @@ export default {
   brandLight: "#666",
 
   // Font
-  fontFamily: platform === "ios" ? "System" : "Roboto",
+  fontFamily: 'System',//platform === "ios" ? "System" : "Roboto",
   fontSizeBase: 15,
 
   get fontSizeH1() {
