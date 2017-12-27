@@ -1,16 +1,50 @@
 import React, { Component } from 'react';
-import { Text } from 'native-base'
+import {
+  Container,
+  Content,
+  Body,
+  Text,
+  ListItem,
+  Right,
+  Radio
+} from 'native-base'
+import { connect } from 'react-redux';
+
+import { styles } from '../../config/theme';
+import { setActiveRestaurant } from '../wrapper/duck';
 
 class Settings extends Component {
   static navigationOptions = () => ({
-    title: 'Settings'
+    title: 'Select Restaurant'
   });
 
   render() {
+    const { restaurants, activeRestaurant, setActiveRestaurant } = this.props;
+
     return (
-      <Text>Settings</Text>
+      <Container>
+        <Content>
+          {
+            restaurants.map(restaurant => (
+              <ListItem style={styles.list} key={restaurant.id} onPress={() => setActiveRestaurant(restaurant.id)}>
+                <Body><Text>{restaurant.name}</Text></Body>
+                <Right>
+                  <Radio selected={restaurant.id === activeRestaurant} onPress={() => setActiveRestaurant(restaurant.id)}/>
+                </Right>
+              </ListItem>
+            ))
+          }
+        </Content>
+      </Container>
     );
   }
+};
+
+const mapStateToProps = state => {
+  return ({
+    restaurants,
+    activeRestaurant
+  } = state.global);
 }
 
-export default Settings;
+export default connect(mapStateToProps, { setActiveRestaurant })(Settings);

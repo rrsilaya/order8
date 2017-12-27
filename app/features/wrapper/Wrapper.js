@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, Button, Icon } from 'native-base';
 import { TabNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import Summary from '../summary/Summary';
 import Menu from '../menu/Menu';
 import Orders from '../orders/Orders';
 import FooterTab from '../footerTab/FooterTab';
+
+import { getRestaurants } from './duck';
 
 const routes = {
   summary: { screen: Summary },
@@ -31,6 +34,10 @@ class Wrapper extends Component {
     )
   });
 
+  componentDidMount() {
+    this.props.getRestaurants();
+  }
+
   render() {
     return (
       <Sections/>
@@ -38,4 +45,6 @@ class Wrapper extends Component {
   }
 };
 
-export default Wrapper;
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps, { getRestaurants })(Wrapper);

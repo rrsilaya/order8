@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "334353335585",
+    "firebase_url": "https://order8app.firebaseio.com",
+    "project_id": "order8app",
+    "storage_bucket": "order8app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334353335585:android:037a20c497305470",
+        "android_client_info": {
+          "package_name": "com.order8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334353335585-a1emsjgcnkgm0tuivhtl6uqkhrmsttei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDau_zWOBMPhfeMLhGDYD2u08MhJwMHud4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

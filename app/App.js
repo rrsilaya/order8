@@ -1,9 +1,9 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
+import Loader from './features/loader/Loader';
 import Wrapper from './features/wrapper/Wrapper';
 import Settings from './features/settings/Settings';
-import Header from './features/header/Header';
 
 import { colors } from './config/theme';
 
