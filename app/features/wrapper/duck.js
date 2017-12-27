@@ -1,4 +1,5 @@
 import data from '../../data';
+import { flattenData } from '../../config/utils';
 
 // Action Types
 
@@ -6,7 +7,8 @@ import data from '../../data';
 
 // Initial State
 const initialState = {
-  menu: data
+  menu: flattenData(data.a.menu),
+  restaurant: data.a.name
 };
 
 const reducer = (state = initialState, action) => {
