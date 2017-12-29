@@ -3,18 +3,22 @@ import { AppRegistry } from 'react-native';
 import { StyleProvider } from 'native-base';
 
 import { Provider } from 'react-redux';
-import store from './app/config/store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { store, persistor } from './app/config/store';
 
 import getTheme from './native-base-theme/components';
 import colors from './native-base-theme/variables/commonColor';
 import App from './app/App';
+import Loader from './app/features/loader/Loader';
 
 class Order8 extends Component {
   render() {
     return (
       <StyleProvider style={getTheme(colors)}>
         <Provider store={store}>
-          <App/>
+          <PersistGate persistor={persistor} loading={<Loader/>}>
+            <App/>
+          </PersistGate>
         </Provider>
       </StyleProvider>
     );
