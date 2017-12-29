@@ -42,11 +42,11 @@ class Menu extends Component {
                     onPress={() =>
                       this.handleOpen(
                         dish.name,
-                        `Php ${dish.price.toFixed(2)}\n\nAddons:\n${!dish.addons
+                        `Php ${dish.price && dish.price.toFixed(2)}\n\nVariants:\n${!dish.prices
                           ? "None"
-                          : dish.addons.map(
+                          : dish.prices.map(
                               addon =>
-                                `${addon.name} (Php ${addon.price.toFixed(
+                                `${addon.name} (Php ${addon.price && addon.price.toFixed(
                                   2
                                 )})\n`
                             )}`
@@ -56,7 +56,7 @@ class Menu extends Component {
                       <Text>{dish.name}</Text>
                     </Body>
                     <Right>
-                      <Text note>Php {dish.price.toFixed(2)}</Text>
+                      <Text note>{dish.price && 'Php ' + dish.price.toFixed(2)}</Text>
                     </Right>
                   </ListItem>
                 ))}

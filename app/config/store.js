@@ -8,7 +8,7 @@ import { middleware as pack } from 'redux-pack';
 import reducers from '../features';
 
 const config = {
-  key: 'root',
+  key: 'order8app',
   storage
 };
 

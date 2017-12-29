@@ -16,13 +16,10 @@ export const getRestaurants = () => {
 };
 
 export const setActiveRestaurant = id => {
-  return dispatch => {
-    dispatch(getMenu(id));
-    return {
-      type: SET_RESTAURANT,
-      payload: id
-    };
-  }
+  return {
+    type: SET_RESTAURANT,
+    payload: id
+  };
 }
 
 // Initial State
@@ -51,9 +48,16 @@ const reducer = (state = initialState, action) => {
       });
 
     case SET_RESTAURANT:
+      const {
+        name: restaurant,
+        meals
+      } = state.restaurants.filter(rest => rest.id === payload)[0];
+
       return {
         ...state,
-        activeRestaurant: payload
+        activeRestaurant: payload,
+        restaurant,
+        menu: Object.keys(meals).map(meal => ({ name: meal, dish: meals[meal] }))
       }
 
     default:

@@ -35,7 +35,7 @@ class Wrapper extends Component {
   });
 
   componentDidMount() {
-    this.props.getRestaurants();
+    if (!this.props.restaurants.length) this.props.getRestaurants();
   }
 
   render() {
@@ -45,6 +45,10 @@ class Wrapper extends Component {
   }
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  return ({
+    restaurants
+  } = state.global);
+};
 
 export default connect(mapStateToProps, { getRestaurants })(Wrapper);
