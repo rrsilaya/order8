@@ -115,6 +115,16 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            if (project.hasProperty('keyStore')) {
+                storeFile file(keyStore)
+                storePassword order8app
+                keyAlias order8
+                keyPassword order8app
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
