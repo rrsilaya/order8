@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import { StyleProvider } from 'native-base';
+import { StyleProvider, Root } from 'native-base';
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
@@ -17,7 +17,9 @@ class Order8 extends Component {
       <StyleProvider style={getTheme(colors)}>
         <Provider store={store}>
           <PersistGate persistor={persistor} loading={<Loader/>}>
-            <App/>
+            <Root>
+              <App/>
+            </Root>
           </PersistGate>
         </Provider>
       </StyleProvider>

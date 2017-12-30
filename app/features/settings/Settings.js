@@ -7,6 +7,7 @@ import {
   ListItem,
   Right,
   Radio,
+  Toast
 } from 'native-base';
 import PullContainer from 'react-native-pull-to-refresh';
 import { connect } from 'react-redux';
@@ -22,6 +23,11 @@ class Settings extends Component {
   handleRefresh = () => {
     return new Promise(resolve => {
       this.props.getRestaurants();
+      Toast.show({
+        text: 'Syncing restaurants from database',
+        position: 'bottom'
+      });
+
       while (true) {
         if (!this.props.isGettingRestaurants) return resolve();
       }
