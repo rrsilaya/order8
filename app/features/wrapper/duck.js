@@ -28,6 +28,7 @@ const initialState = {
   restaurant: 'Name',
 
   restaurants: [],
+  isGettingRestaurants: true,
   activeRestaurant: ''
 };
 
@@ -37,14 +38,30 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case GET_RESTAURANTS:
       return handle(state, action, {
+        start: prevState => ({
+          ...prevState,
+          isGettingRestaurants: true
+        }),
         success: prevState => {
           const res = Api.flattenCollection(payload);
+          const {
+            meals: menu,
+            name: restaurant,
+            id: activeRestaurant
+          } = res.data[0];
 
           return {
             ...prevState,
             restaurants: res.data,
+            menu: Object.keys(menu).map(meal => ({ name: meal, dish: menu[meal] })),
+            restaurant,
+            activeRestaurant
           }
-        }
+        },
+        finish: prevState => ({
+          ...prevState,
+          isGettingRestaurants: false
+        })
       });
 
     case SET_RESTAURANT:
