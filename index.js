@@ -6,8 +6,8 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { store, persistor } from './app/config/store';
 
-import getTheme from './native-base-theme/components';
-import colors from './native-base-theme/variables/commonColor';
+import getTheme from './theme/components';
+import colors from './theme/variables/commonColor';
 import App from './app/App';
 import Loader from './app/features/loader/Loader';
 
