@@ -5,7 +5,7 @@ const styles = {
   },
   list: {
     marginLeft: 0,
-    paddingLeft: 5
+    paddingLeft: 5,
   }
 };
 

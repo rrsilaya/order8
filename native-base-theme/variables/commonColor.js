@@ -1,7 +1,7 @@
 import color from "color";
 import { Platform, Dimensions, PixelRatio } from "react-native";
 
-import { colors } from '../../app/config/theme';
+import { colors, font } from '../../app/config/theme';
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -14,7 +14,7 @@ export default {
   platform,
   // AndroidRipple
   androidRipple: true,
-  androidRippleColor: "rgba(256, 256, 256, 0.3)",
+  androidRippleColor: "rgba(255, 255, 255, 0.3)",
   androidRippleColorDark: "rgba(0, 0, 0, 0.15)",
 
   // Badge
@@ -24,7 +24,7 @@ export default {
   badgePadding: platform === "ios" ? 3 : 0,
 
   // Button
-  btnFontFamily: platform === "ios" ? "System" : "Roboto_medium",
+  btnFontFamily: font,
   btnDisabledBg: "#b5b5b5",
   btnDisabledClr: "#f1f1f1",
 
@@ -123,7 +123,7 @@ export default {
   brandLight: "#666",
 
   // Font
-  fontFamily: 'System',//platform === "ios" ? "System" : "Roboto",
+  fontFamily: font,
   fontSizeBase: 15,
 
   get fontSizeH1() {
@@ -260,7 +260,7 @@ export default {
   noteFontSize: 14,
 
   // Title
-  titleFontfamily: platform === "ios" ? "System" : "Roboto_medium",
+  titleFontfamily: font,
   titleFontSize: platform === "ios" ? 17 : 19,
   subTitleFontSize: platform === "ios" ? 12 : 14,
   subtitleColor: colors.white,

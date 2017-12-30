@@ -17,8 +17,12 @@ import {
 import styles from "./styles";
 
 class Menu extends Component {
-  handleOpen = (title, content) => {
-    Alert.alert(title, content, [{ text: "OK", onPress: () => {} }]);
+  handleOpen = ({ name, price = 0, prices = [], definition = '' }) => {
+    price = price.toFixed(2);
+    const content = `Php ${price}\n${definition && definition + '\n'}\n`;
+    const variants = 'Variants:\n' + prices.length ? prices.map(({ name, price = 0 }) => `${name} (Php ${price.toFixed(2)})`).join('\n') : 'None';
+
+    Alert.alert(name, content + variants, [{ text: "Close", onPress: () => {} }]);
   };
 
   render() {
@@ -28,41 +32,36 @@ class Menu extends Component {
       <Container>
         <Content>
           <H2 style={styles.header}>{restaurant} Menu</H2>
-          <List
-            dataArray={menu}
-            renderRow={type => (
-              <View>
-                <Separator bordered>
-                  <Text>{type.name}</Text>
-                </Separator>
-                {type.dish.map(dish => (
-                  <ListItem
-                    style={styles.list}
-                    key={dish.id}
-                    onPress={() =>
-                      this.handleOpen(
-                        dish.name,
-                        `Php ${dish.price && dish.price.toFixed(2)}\n\nVariants:\n${!dish.prices
-                          ? "None"
-                          : dish.prices.map(
-                              addon =>
-                                `${addon.name} (Php ${addon.price && addon.price.toFixed(
-                                  2
-                                )})\n`
-                            )}`
-                      )}
-                  >
-                    <Body>
-                      <Text>{dish.name}</Text>
-                    </Body>
-                    <Right>
-                      <Text note>{dish.price && 'Php ' + dish.price.toFixed(2)}</Text>
-                    </Right>
-                  </ListItem>
-                ))}
-              </View>
-            )}
-          />
+          <List>
+            {
+              menu.map((type, i) => (
+                <View key={i}>
+                  <Separator bordered><Text>{ type.name }</Text></Separator>
+
+                  {
+                    type.dish.map((dish, i) => (
+                      <ListItem
+                        button
+                        style={styles.list}
+                        key={dish.id}
+                        last={dish.length - 1 === i && i !== 0}
+                        first={i === 0}
+                        onPress={() => { this.handleOpen(dish) }}
+                      >
+                        <Body>
+                          <Text>{dish.name}</Text>
+                          {dish.definition && <Text note>{dish.definition}</Text>}
+                        </Body>
+                        <Right>
+                          <Text note>{dish.price && 'Php ' + dish.price.toFixed(2)}</Text>
+                        </Right>
+                      </ListItem>
+                    ))
+                  }
+                </View>
+              ))
+            }
+          </List>
         </Content>
       </Container>
     );

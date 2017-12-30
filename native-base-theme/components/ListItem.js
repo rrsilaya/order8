@@ -57,7 +57,7 @@ export default (variables = variable) => {
             fontWeight: "500"
           },
           paddingHorizontal: null,
-          paddingLeft: platform === "ios" ? 10 : null
+          paddingLeft: 0
         },
         paddingHorizontal: platform === "ios" ? undefined : null,
         width: platform === "ios" ? undefined : 0,
@@ -83,7 +83,6 @@ export default (variables = variable) => {
       borderBottomWidth: platform === "ios" ? variables.borderWidth : null,
       marginLeft: null,
       padding: variables.listItemPadding,
-      paddingLeft: variables.listItemPadding + 5,
       paddingTop: platform === "ios"
         ? variables.listItemPadding + 25
         : undefined,

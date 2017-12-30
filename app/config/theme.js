@@ -9,3 +9,5 @@ export const styles = {
     paddingLeft: 5
   }
 }
+
+export const font = 'System';
